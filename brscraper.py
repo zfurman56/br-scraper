@@ -61,7 +61,7 @@ class BRScraper:
             
             rows = table.find("tbody").find_all(is_parseable_row)
             for row in rows:
-                entries = row.find_all("td")
+                entries = row.find_all(["td", "th"])
                 entry_data = []
                 for entry in entries:
                     if entry.string == None:
