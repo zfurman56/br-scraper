@@ -17,12 +17,12 @@ class BRScraper:
         """
 
         def is_parseable_table(tag):
-            if not tag.has_key("class"): return False
+            if not tag.has_attr("class"): return False
             return tag.name == "table" and "stats_table" in tag["class"] and "sortable" in tag["class"]
 
         def is_parseable_row(tag):
             if not tag.name == "tr": return False
-            if not tag.has_key("class"): return True  # permissive
+            if not tag.has_attr("class"): return True  # permissive
             return "league_average_table" not in tag["class"] and "stat_total" not in tag["class"]
 
         if isinstance(table_ids, str): table_ids = [table_ids]
