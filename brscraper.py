@@ -35,7 +35,7 @@ class BRScraper:
         for table in tables:
             
             if table_ids != None and table["id"] not in table_ids: continue
-            if verbose: print ("Processing table " + table["id"])
+            if verbose: print("Processing table " + table["id"])
             data[table["id"]] = []
             
             headers = table.find("thead").find_all("th")
