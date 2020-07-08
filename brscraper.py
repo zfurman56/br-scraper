@@ -1,6 +1,6 @@
 
 from bs4 import BeautifulSoup
-import urllib2
+from urllib.request import urlopen
 
 class BRScraper:
     
@@ -27,7 +27,7 @@ class BRScraper:
 
         if isinstance(table_ids, str): table_ids = [table_ids]
 
-        soup = BeautifulSoup(urllib2.urlopen(self.server_url + resource))
+        soup = BeautifulSoup(urlopen(self.server_url + resource), 'lxml')
         tables = soup.find_all(is_parseable_table)
         data = {}
 
@@ -35,7 +35,7 @@ class BRScraper:
         for table in tables:
             
             if table_ids != None and table["id"] not in table_ids: continue
-            if verbose: print "Processing table " + table["id"]
+            if verbose: print("Processing table " + table["id"])
             data[table["id"]] = []
             
             headers = table.find("thead").find_all("th")
@@ -52,9 +52,9 @@ class BRScraper:
                         header_name = base_header_name + "_" + str(i)
                     if verbose: 
                         if base_header_name == "":
-                            print "Empty header relabeled as %s" % header_name
+                            print("Empty header relabeled as %s" % header_name)
                         else:
-                            print "Header %s relabeled as %s" % (base_header_name, header_name)
+                            print("Header %s relabeled as %s" % (base_header_name, header_name))
                 else:
                     header_name = base_header_name
                 header_names.append(header_name)
