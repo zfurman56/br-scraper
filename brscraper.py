@@ -54,7 +54,7 @@ class BRScraper:
                         if base_header_name == "":
                             print ("Empty header relabeled as %s" % header_name)
                         else:
-                            print ("Header %s relabeled as %s" % (base_header_name, header_name))
+                            print("Header %s relabeled as %s" % (base_header_name, header_name))
                 else:
                     header_name = base_header_name
                 header_names.append(header_name)
