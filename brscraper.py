@@ -52,7 +52,7 @@ class BRScraper:
                         header_name = base_header_name + "_" + str(i)
                     if verbose: 
                         if base_header_name == "":
-                            print ("Empty header relabeled as %s" % header_name)
+                            print("Empty header relabeled as %s" % header_name)
                         else:
                             print("Header %s relabeled as %s" % (base_header_name, header_name))
                 else:
